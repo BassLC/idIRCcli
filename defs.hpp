@@ -14,7 +14,7 @@ public:
 	AbsSocket(const std::string &node, const std::string &service);
 	~AbsSocket();
 
-	bool to_connect();
+	bool to_connect(const std::string &nick, const std::string &host, const std::string &password, const std::string &channel);
 	bool to_send(const std::string &phrase);
 	std::string to_receive();
 };

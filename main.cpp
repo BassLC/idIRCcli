@@ -3,13 +3,23 @@
 #include <string>
 
 int main() {
-	const std::string host = "127.0.0.1";
-	const std::string port = "7777";
-	
+	const std::string host = "irc.freenode.net";
+	const std::string port = "6667";
+	const std::string nick = "asxcvbghty";
+	const std::string channel = "#r/globaloffensive";
+	const std::string password = "";
+
 	AbsSocket connection(host, port);
-	if ( connection.to_connect() ) {
+	if ( connection.to_connect(nick, host, password, channel) ) {
 		while ( true ) {
-			std::cout << connection.to_receive();
+			std::string received = connection.to_receive();
+			if ( received == "CLOSED" ) {
+				return EXIT_SUCCESS;
+			} else if ( received == "ERROR" ) {
+				return EXIT_FAILURE;
+			}
+
+			std::cout << received;
 		}
 	}
 
