@@ -11,12 +11,12 @@ VV=--std=c++14
 WARNINGS=-Wall -Wextra -Wpedantic
 
 #FLAGS specifies the flags wre passing
-FLAGS= -o 
+FLAGS= -pthreads -o 
 
 
 #This is the target that compiles our executable
 debug :
 	$(CC) $(VV) $(WARNINGS) $(OBJS) -g $(FLAGS) debug 
 
-all : 
+main : 
 	$(CC) $(VV) $(WARNINGS) $(OBJS) -O3 $(FLAGS) idIRCcli

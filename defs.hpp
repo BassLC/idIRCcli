@@ -9,15 +9,21 @@ class AbsSocket {
 private:
 	int file_desc;
 	struct addrinfo *res;
-	
+
+	std::string port = "6667";
+	std::string password;
+	std::string nick;
+	std::string host;
+	std::string channel;
+
 public:
-	AbsSocket(const std::string &node, const std::string &service);
+	AbsSocket();
 	~AbsSocket();
 
-	bool to_connect(const std::string &nick, const std::string &host, const std::string &password, const std::string &channel);
+	bool to_connect();
 	bool to_send(const std::string &phrase);
 	std::string to_receive();
+	void parse_and_send(std::string &phrase);
 };
-
 
 #endif
