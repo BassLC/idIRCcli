@@ -85,7 +85,7 @@ std::string AbsSocket::to_receive() {
 
 void AbsSocket::parse_and_send(std::string &phrase) {
 	if ( phrase[0] == '/' ) { 
-		switch(phrase[1]) {
+		switch( phrase[1] ) {
 		case 'j':
 			to_send("PART " + channel); //Exit old channel
 			channel = phrase.substr(3);
@@ -116,7 +116,6 @@ void AbsSocket::parse_and_send(std::string &phrase) {
 		return;
 	}
 
-	
 	to_send("PRIVMSG "+ channel + " :" + phrase);
 }
 

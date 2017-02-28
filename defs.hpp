@@ -16,12 +16,12 @@ private:
 	std::string host;
 	std::string channel;
 
+	bool to_send(const std::string &phrase);
 public:
 	AbsSocket();
 	~AbsSocket();
 
 	bool to_connect();
-	bool to_send(const std::string &phrase);
 	std::string to_receive();
 	void parse_and_send(std::string &phrase);
 };

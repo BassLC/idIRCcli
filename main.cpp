@@ -4,7 +4,7 @@
 #include <thread>
 #include "defs.hpp"
 
-void send_phrase(AbsSocket &socket ,std::atomic<bool> &ref) {
+void send_phrase(AbsSocket &socket, std::atomic<bool> &ref) {
 	std::string buffer;
 	while ( ref.load() ) {
 		std::getline(std::cin, buffer);
