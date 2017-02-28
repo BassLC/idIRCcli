@@ -7,15 +7,18 @@ AbsSocket::AbsSocket() {
 	std::cout << "Input password: ";
 	std::getline(std::cin, password);
 
-	std::cout << "Input your nick: ";
+	std::cout << "Input your nick (default: env_name): ";
 	std::getline(std::cin, nick);
+	nick = (nick.length() ? nick : getenv("USER"));
 
-	std::cout << "Input your host: ";
+	std::cout << "Input your host (default: irc.freenode.net): ";
 	std::getline(std::cin, host);
-
+	host = (host.length() ? host : "irc.freenode.net");
+	
 	std::cout << "Input port (default: 6667): ";
 	std::getline(std::cin, port);
-
+	port = (port.length() ? port : "6667");
+	
 	channel = "";
 
 	const int status = getaddrinfo(host.c_str(), port.c_str(), NULL, &res);

@@ -10,7 +10,7 @@ private:
 	int file_desc;
 	struct addrinfo *res;
 
-	std::string port = "6667";
+	std::string port;
 	std::string password;
 	std::string nick;
 	std::string host;
