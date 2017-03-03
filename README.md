@@ -15,13 +15,13 @@ It needs at least: a standard cpp compiler with c++14 support (change in makefil
 The client will ask, when started: your nick, node, port, and password so it can access the server.
 
 ##Commands 
-```-j CHANNEL_NAME``` : To join a channel (can only be connected with one at the same time).
+```/j CHANNEL_NAME``` : To join a channel (can only be connected with one at the same time).
 
-```-r COMMAND``` : To send a raw command to the server.
+```/r COMMAND``` : To send a raw command to the server.
 
-```-s USER_NAME MESSAGE``` : To send a personal message to a user.
+```/s USER_NAME MESSAGE``` : To send a personal message to a user.
 
-```-q``` : To quit the server.
+```/q``` : To quit the server.
 
 Default behaviour is to send a message to the channel you're connected.
 
