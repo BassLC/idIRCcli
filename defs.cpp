@@ -9,15 +9,15 @@ AbsSocket::AbsSocket() {
 
 	std::cout << "Input your nick (default: env_name): ";
 	std::getline(std::cin, nick);
-	nick = (nick.length() ? nick : getenv("USER"));
+	nick = (nick.empty() ? getenv("USER") : nick);
 
 	std::cout << "Input your host (default: irc.freenode.net): ";
 	std::getline(std::cin, host);
-	host = (host.length() ? host : "irc.freenode.net");
+	host = (host.empty() ? "irc.freenode.net" : host );
 	
 	std::cout << "Input port (default: 6667): ";
 	std::getline(std::cin, port);
-	port = (port.length() ? port : "6667");
+	port = (port.empty() ? "6667" : port);
 	
 	channel = "";
 
@@ -45,7 +45,7 @@ bool AbsSocket::to_connect() {
 		return false;
 	}
 	//Init (Nick and Password)
-	to_send( password.length() ? ("PASS " + password) : "");
+	to_send(password.empty() ? "" : ("PASS " + password));
 	to_send("NICK " + nick);
 	to_send("USER " + nick + " localhost " + host + " :" + nick);
 
@@ -64,6 +64,7 @@ bool AbsSocket::to_send(const std::string &phrase) {
 std::string AbsSocket::to_receive() {
 	std::vector<char> rec_buf (1024);
 	int bytes_received = recv(file_desc, rec_buf.data(), 1024, 0);
+	
 	switch ( bytes_received ) {
 	case 0:
 		std::cerr << "Server closed connection.\n";
