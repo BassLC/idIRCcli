@@ -119,6 +119,3 @@ void AbsSocket::parse_and_send(std::string &phrase) {
 
 	to_send("PRIVMSG "+ channel + " :" + phrase);
 }
-
-
-
